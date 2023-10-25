@@ -1,3 +1,5 @@
+import uuid
+
 from computedfields.models import ComputedFieldsModel, computed
 from django.core import validators
 from django.db import models
@@ -6,6 +8,7 @@ from categories import models as categories_models
 
 
 class Product(ComputedFieldsModel):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=100)
     description = models.TextField()
     color = models.CharField(max_length=100)
