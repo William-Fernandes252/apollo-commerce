@@ -1,3 +1,4 @@
+from django.core import validators
 from django.db import models
 
 from categories import models as categories_models
@@ -7,7 +8,9 @@ class Product(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField()
     color = models.CharField(max_length=100)
-    price = models.DecimalField(max_digits=9, decimal_places=2)
+    price = models.DecimalField(
+        max_digits=9, decimal_places=2, validators=[validators.MinValueValidator(0)]
+    )
     category = models.ForeignKey(categories_models.Category, on_delete=models.CASCADE)
 
     @property
