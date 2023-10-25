@@ -12,7 +12,7 @@ class Product(models.Model):
 
     @property
     def promotion_price(self) -> float:
-        return self.price * (1 - self.category.discount)
+        return self.price * (1 - self.category.discount_for_calc)
 
     class Meta:
         indexes = [
