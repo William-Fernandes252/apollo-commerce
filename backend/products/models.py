@@ -1,10 +1,11 @@
+from computedfields.models import ComputedFieldsModel, computed
 from django.core import validators
 from django.db import models
 
 from categories import models as categories_models
 
 
-class Product(models.Model):
+class Product(ComputedFieldsModel):
     name = models.CharField(max_length=100)
     description = models.TextField()
     color = models.CharField(max_length=100)
@@ -13,9 +14,19 @@ class Product(models.Model):
     )
     category = models.ForeignKey(categories_models.Category, on_delete=models.CASCADE)
 
-    @property
+    @computed(
+        models.DecimalField(
+            help_text="Promotion price based on the product category discount",
+            validators=[validators.MinValueValidator(0)],
+            max_digits=9,
+            decimal_places=2,
+            default=0,
+            null=False,
+        ),
+        depends=[("self", ["price"]), ("category", ["discount"])],
+    )
     def promotion_price(self) -> float:
-        return self.price * (1 - self.category.discount_for_calc)
+        return round(self.price * (1 - self.category.discount_for_calc), 2)
 
     class Meta:
         indexes = [

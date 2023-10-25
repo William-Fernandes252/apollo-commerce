@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 
-import environ
+import environ  # type: ignore
 
 env = environ.Env(
     DEBUG=(bool, False),
@@ -54,10 +54,7 @@ DJANGO_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
 ]
-THIRD_PARTY_APPS = [
-    "rest_framework",
-    "django_filters",
-]
+THIRD_PARTY_APPS = ["rest_framework", "django_filters", "computedfields"]
 LOCAL_APPS = ["categories", "products", "users"]
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
@@ -100,12 +97,14 @@ DATABASES = {"default": env.db()}
 
 
 # Django Rest Framework
+
 REST_FRAMEWORK = {
     "DEFAULT_FILTER_BACKENDS": ("django_filters.rest_framework.DjangoFilterBackend",),
 }
 
 
 # Authentication
+
 AUTH_USER_MODEL = "users.User"
 
 
@@ -149,3 +148,7 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+
+# Computed fields in admin page
+COMPUTEDFIELDS_ADMIN = True
