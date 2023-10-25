@@ -54,7 +54,12 @@ DJANGO_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
 ]
-THIRD_PARTY_APPS = ["rest_framework", "django_filters", "computedfields"]
+THIRD_PARTY_APPS = [
+    "rest_framework",
+    "django_filters",
+    "computedfields",
+    "crispy_forms",
+]
 LOCAL_APPS = ["categories", "products", "users"]
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
@@ -100,6 +105,8 @@ DATABASES = {"default": env.db()}
 
 REST_FRAMEWORK = {
     "DEFAULT_FILTER_BACKENDS": ("django_filters.rest_framework.DjangoFilterBackend",),
+    "DEFAULT_PAGINATION_CLASS": "apollo_commerce_api.core.pagination.ExtendedPageNumberPagination",
+    "PAGE_SIZE": 50,
 }
 
 

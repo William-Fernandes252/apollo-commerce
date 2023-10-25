@@ -225,6 +225,20 @@ django-fast-update = "*"
 typing_extensions = ">=4.1"
 
 [[package]]
+name = "django-crispy-forms"
+version = "2.1"
+description = "Best way to have Django DRY forms"
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "django-crispy-forms-2.1.tar.gz", hash = "sha256:4d7ec431933ad4d4b5c5a6de4a584d24613c347db9ac168723c9aaf63af4bb96"},
+    {file = "django_crispy_forms-2.1-py3-none-any.whl", hash = "sha256:d592044771412ae1bd539cc377203aa61d4eebe77fcbc07fbc8f12d3746d4f6b"},
+]
+
+[package.dependencies]
+django = ">=4.2"
+
+[[package]]
 name = "django-environ"
 version = "0.11.2"
 description = "A package that allows you to utilize 12factor inspired environment variables to configure your Django application."
@@ -1061,4 +1075,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11.3"
-content-hash = "d719d0ef2fed6ecb0924c2e0cef2c2236db664e3a5fd0ab6a946d870690a3b7d"
+content-hash = "d9d533b48f6f04d7c8608110b8561a477b77791a2dbfbd3d4655f41d5a0a6894"
