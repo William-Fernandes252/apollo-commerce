@@ -26,7 +26,7 @@ class Product(ComputedFieldsModel):
         depends=[("self", ["price"]), ("category", ["discount"])],
     )
     def promotion_price(self) -> float:
-        return round(self.price * (1 - self.category.discount_for_calc), 2)
+        return round(float(self.price) * float(1 - self.category.discount_for_calc), 2)
 
     class Meta:
         indexes = [
