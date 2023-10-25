@@ -228,6 +228,21 @@ argon2 = ["argon2-cffi (>=19.1.0)"]
 bcrypt = ["bcrypt"]
 
 [[package]]
+name = "django-computedfields"
+version = "0.2.3"
+description = "autoupdated database fields for model methods"
+optional = false
+python-versions = "*"
+files = [
+    {file = "django-computedfields-0.2.3.tar.gz", hash = "sha256:abc99b603b66bb7c627df1ba104fc5fbc8ec15d1ec2272e2c7b44ec18b2631a4"},
+]
+
+[package.dependencies]
+Django = ">=2.2,<5.0"
+django-fast-update = "*"
+typing_extensions = ">=4.1"
+
+[[package]]
 name = "django-environ"
 version = "0.11.2"
 description = "A package that allows you to utilize 12factor inspired environment variables to configure your Django application."
@@ -242,6 +257,19 @@ files = [
 develop = ["coverage[toml] (>=5.0a4)", "furo (>=2021.8.17b43,<2021.9.dev0)", "pytest (>=4.6.11)", "sphinx (>=3.5.0)", "sphinx-notfound-page"]
 docs = ["furo (>=2021.8.17b43,<2021.9.dev0)", "sphinx (>=3.5.0)", "sphinx-notfound-page"]
 testing = ["coverage[toml] (>=5.0a4)", "pytest (>=4.6.11)"]
+
+[[package]]
+name = "django-fast-update"
+version = "0.2.3"
+description = "Faster db updates for Django using UPDATE FROM VALUES sql variants."
+optional = false
+python-versions = "*"
+files = [
+    {file = "django-fast-update-0.2.3.tar.gz", hash = "sha256:76ad711a1dc193e20233458d584e51ad6d354663b8952ada768eec1d997abc3c"},
+]
+
+[package.dependencies]
+Django = ">=3.2"
 
 [[package]]
 name = "django-filter"
@@ -720,6 +748,24 @@ pytest-fixture-order = ">=0.1.2,<0.2.0"
 pytest-lambda = ">=0.1.0"
 
 [[package]]
+name = "pytest-django"
+version = "4.5.2"
+description = "A Django plugin for pytest."
+optional = false
+python-versions = ">=3.5"
+files = [
+    {file = "pytest-django-4.5.2.tar.gz", hash = "sha256:d9076f759bb7c36939dbdd5ae6633c18edfc2902d1a69fdbefd2426b970ce6c2"},
+    {file = "pytest_django-4.5.2-py3-none-any.whl", hash = "sha256:c60834861933773109334fe5a53e83d1ef4828f2203a1d6a0fa9972f4f75ab3e"},
+]
+
+[package.dependencies]
+pytest = ">=5.4.0"
+
+[package.extras]
+docs = ["sphinx", "sphinx-rtd-theme"]
+testing = ["Django", "django-configurations (>=2.0)"]
+
+[[package]]
 name = "pytest-drf"
 version = "1.1.3"
 description = "A Django REST framework plugin for pytest."
@@ -1005,4 +1051,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11.3"
-content-hash = "21ffc059909f8965973c168555350aa8abe0509c522258e931b8c4d17b61bd3e"
+content-hash = "5243bbb9e50f087ab3bda17b50c7c4d7725b0c11e3efefa8b4236fc15810d0e0"
