@@ -62,6 +62,7 @@ DJANGO_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django.contrib.postgres",
 ]
 THIRD_PARTY_APPS = [
     "rest_framework",
@@ -69,6 +70,7 @@ THIRD_PARTY_APPS = [
     "computedfields",
     "crispy_forms",
     "corsheaders",
+    "crispy_bootstrap4",
 ]
 LOCAL_APPS = ["categories", "products", "users"]
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
