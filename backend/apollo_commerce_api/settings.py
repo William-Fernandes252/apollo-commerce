@@ -17,6 +17,8 @@ import environ  # type: ignore
 env = environ.Env(
     DEBUG=(bool, False),
     ALLOWED_HOSTS=(list, []),
+    CORS_ALLOWED_ORIGINS=(list, []),
+    CORS_ORIGIN_ALLOW_ALL=(bool, False),
 )
 
 
@@ -41,7 +43,12 @@ SECRET_KEY = env("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env("DEBUG")
 
+
+# CORS and hosting policy
+
 ALLOWED_HOSTS = env("ALLOWED_HOSTS")
+
+CORS_ALLOWED_ORIGINS = env("CORS_ALLOWED_ORIGINS")
 
 
 # Application definition
@@ -59,6 +66,7 @@ THIRD_PARTY_APPS = [
     "django_filters",
     "computedfields",
     "crispy_forms",
+    "corsheaders",
 ]
 LOCAL_APPS = ["categories", "products", "users"]
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -72,6 +80,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
 ]
 
 ROOT_URLCONF = "apollo_commerce_api.urls"
