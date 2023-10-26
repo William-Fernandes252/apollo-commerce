@@ -103,6 +103,8 @@ TEMPLATES = [
     },
 ]
 
+CRISPY_TEMPLATE_PACK = "bootstrap4"
+
 WSGI_APPLICATION = "apollo_commerce_api.wsgi.application"
 
 
