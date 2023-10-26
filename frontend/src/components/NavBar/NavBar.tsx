@@ -12,9 +12,10 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+import { NavLink } from 'react-router-dom';
 
 const drawerWidth = 240;
-const navItems = ['Products', 'Categories'];
+const navItems = new Map<string, string>([['/products', 'Products']]);
 
 export default function NavBar() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -27,15 +28,23 @@ export default function NavBar() {
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
-      <Typography variant="h6" sx={{ my: 2 }} textTransform={'uppercase'}>
+      <Typography
+        variant="h6"
+        sx={{ my: 2 }}
+        textTransform={'uppercase'}
+        component={NavLink}
+        to={'/'}>
         {title}
       </Typography>
       <Divider />
       <List>
-        {navItems.map(item => (
-          <ListItem key={item} disablePadding>
-            <ListItemButton sx={{ textAlign: 'center' }}>
-              <ListItemText primary={item} />
+        {[...navItems.entries()].map(([path, page]) => (
+          <ListItem key={path} disablePadding>
+            <ListItemButton
+              sx={{ textAlign: 'center' }}
+              component={NavLink}
+              to={path}>
+              <ListItemText primary={page} />
             </ListItemButton>
           </ListItem>
         ))}
@@ -66,9 +75,13 @@ export default function NavBar() {
             {title}
           </Typography>
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-            {navItems.map(item => (
-              <Button key={item} sx={{ color: '#fff' }}>
-                {item}
+            {[...navItems.entries()].map(([path, page]) => (
+              <Button
+                key={path}
+                sx={{ color: '#fff' }}
+                component={NavLink}
+                to={path}>
+                {page}
               </Button>
             ))}
           </Box>

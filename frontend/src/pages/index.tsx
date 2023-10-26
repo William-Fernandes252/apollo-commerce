@@ -1,15 +1,15 @@
 import NavBar from '@/components/NavBar';
-import { Box, Toolbar } from '@mui/material';
+import { Box, Container, Toolbar } from '@mui/material';
 import { Outlet } from 'react-router-dom';
 
 export default function Root() {
   return (
-    <div>
+    <Container maxWidth="xl" sx={{ height: '100vh' }}>
       <NavBar />
       <Box component={'main'} sx={{ p: 3 }}>
         <Toolbar />
         <Outlet />
       </Box>
-    </div>
+    </Container>
   );
 }

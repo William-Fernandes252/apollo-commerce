@@ -1,4 +1,5 @@
-import Index from '@/pages/Index';
+import IndexPage from '@/pages/IndexPage';
+import ProductsPage from '@/pages/ProductsPage';
 import Root from '@/pages';
 import { createBrowserRouter, type RouteObject } from 'react-router-dom';
 
@@ -9,7 +10,11 @@ const routes: RouteObject[] = [
     children: [
       {
         index: true,
-        element: <Index />,
+        element: <IndexPage />,
+      },
+      {
+        path: 'products',
+        element: <ProductsPage />,
       },
     ],
   },
