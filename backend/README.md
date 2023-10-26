@@ -13,21 +13,23 @@ I like to use Docker in my projects, as it allows you to establish a fixed and r
 -   navigate to the project backend directory;
 -   create a `.env` file with the content
 
-          SECRET_KEY="django-insecure-wrmzj#y4o_-pn2!95wn+8(txrv5r9i$mho(%6*o)b4s4=_k31p"
-          DEBUG=1
-          ALLOWED_HOSTS=*
+        SECRET_KEY="django-insecure-wrmzj#y4o_-pn2!95wn+8(txrv5r9i$mho(%6*o)b4s4=_k31p"
+        DEBUG=1
+        ALLOWED_HOSTS=*
+        CORS_ALLOWED_ORIGINS=*
+        CORS_ORIGIN_ALLOW_ALL=1
 
-          POSTGRES_DB=apollo
-          POSTGRES_USER=django
-          POSTGRES_PASSWORD="EyQibMcmmZTkYk4thw6bJHuzYduwG6Sjzqiad9XNFQnP7knrFE5Q5JHftTqAPeiMrqLkAbebT49MwYRAa9DAe5RQNDNxoa5kTNwukYxE4kGpwC3fbYD7H4D7faAdsAAf"
-          POSTGRES_HOST="127.0.0.1"
+        POSTGRES_DB=apollo
+        POSTGRES_USER=django
+        POSTGRES_PASSWORD="EyQibMcmmZTkYk4thw6bJHuzYduwG6Sjzqiad9XNFQnP7knrFE5Q5JHftTqAPeiMrqLkAbebT49MwYRAa9DAe5RQNDNxoa5kTNwukYxE4kGpwC3fbYD7H4D7faAdsAAf"
+        POSTGRES_HOST="127.0.0.1"
 
-          DATABASE_URL=postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
+        DATABASE_URL=postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
 
 -   run
 
-          docker compose --file docker-compose.local.yml up -d
+        docker compose --file docker-compose.local.yml up -d
 
 -   to run the project tests, run
 
-          docker compose exec django pytest
+        docker compose exec django pytest
