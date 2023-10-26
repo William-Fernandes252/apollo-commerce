@@ -1,7 +1,7 @@
 import ProductsTable from '@/components/ProductsTable';
 import PageTitleBox from '@/components/PageTitleBox';
 import { useProductsList } from '@/models/product';
-import { Box, Grid, LinearProgress } from '@mui/material';
+import { Alert, Box, Grid, LinearProgress } from '@mui/material';
 import { useState } from 'react';
 
 export default function ProductsPage() {
@@ -14,6 +14,7 @@ export default function ProductsPage() {
     data: products,
     isLoading,
     create,
+    error,
   } = useProductsList(paginationModel.page, paginationModel.pageSize, params);
 
   function handlePaginationModelChange(newPaginationModel: {
@@ -28,24 +29,37 @@ export default function ProductsPage() {
     }
   }
 
+  let content: JSX.Element;
+  if (error) {
+    content = (
+      <Alert severity="error">
+        {error?.response
+          ? error.response.data.detail
+          : 'An error occurred during the fetch.'}
+      </Alert>
+    );
+  } else {
+    content = isLoading ? (
+      <LinearProgress />
+    ) : (
+      <ProductsTable
+        products={products.results}
+        isLoading={isLoading}
+        onCreate={create}
+        paginationModel={paginationModel}
+        onPaginationModelChange={handlePaginationModelChange}
+        count={products.count}
+      />
+    );
+  }
+
   return (
     <Box>
       <PageTitleBox title="Products" />
       <Box>
         <Grid container spacing={2}>
           <Grid item xs={12}>
-            {isLoading ? (
-              <LinearProgress />
-            ) : (
-              <ProductsTable
-                products={products.results}
-                isLoading={isLoading}
-                onCreate={create}
-                paginationModel={paginationModel}
-                onPaginationModelChange={handlePaginationModelChange}
-                count={products.count}
-              />
-            )}
+            {content}
           </Grid>
         </Grid>
       </Box>
